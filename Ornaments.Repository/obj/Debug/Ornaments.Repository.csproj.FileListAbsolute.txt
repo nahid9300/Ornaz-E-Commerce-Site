@@ -1,0 +1,17 @@
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.Repository.dll.config
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.Repository.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.Repository.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.DatabaseContext.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.Model.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.DatabaseContext.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.DatabaseContext.dll.config
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\Ornaments.Model.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\obj\Debug\Ornaments.Repository.csprojAssemblyReference.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\obj\Debug\Ornaments.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\obj\Debug\Ornaments.Repository.csproj.CopyComplete
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\obj\Debug\Ornaments.Repository.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Repository\obj\Debug\Ornaments.Repository.pdb

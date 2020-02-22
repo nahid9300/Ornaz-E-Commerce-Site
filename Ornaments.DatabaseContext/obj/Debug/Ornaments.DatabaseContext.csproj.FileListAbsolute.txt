@@ -1,0 +1,17 @@
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\Ornaments.DatabaseContext.dll.config
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\Ornaments.DatabaseContext.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\Ornaments.DatabaseContext.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\EntityFramework.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\Ornaments.Model.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\Ornaments.Model.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\EntityFramework.xml
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.csprojAssemblyReference.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.csproj.CoreCompileInputs.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.csproj.CopyComplete
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.Migrations.initialized.resources
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.csproj.GenerateResource.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.Migrations.initialized1.resources

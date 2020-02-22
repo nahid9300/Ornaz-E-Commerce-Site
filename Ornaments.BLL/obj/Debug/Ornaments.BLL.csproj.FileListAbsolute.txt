@@ -1,0 +1,17 @@
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.BLL.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.BLL.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\obj\Debug\Ornaments.BLL.csprojAssemblyReference.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\obj\Debug\Ornaments.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\obj\Debug\Ornaments.BLL.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\obj\Debug\Ornaments.BLL.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.Model.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.Repository.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.DatabaseContext.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.Model.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.Repository.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.Repository.dll.config
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.DatabaseContext.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\Ornaments.DatabaseContext.dll.config
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.BLL\obj\Debug\Ornaments.BLL.csproj.CopyComplete

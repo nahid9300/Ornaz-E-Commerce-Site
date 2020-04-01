@@ -47,5 +47,17 @@ namespace OrnamentsWebApplication.Controllers
             shopViewModel.SortBy = sortBy;
             return View(shopViewModel);
         }
+
+
+        public ActionResult FilterProductsByPrice(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryID, int? sortBy)
+        {
+            PriceFilteringViewModel priceFilteringViewModel = new PriceFilteringViewModel();
+
+
+            priceFilteringViewModel.Products = _productRepository.SearchProduct(searchTerm, minimumPrice, maximumPrice, categoryID, sortBy);
+
+
+            return PartialView(priceFilteringViewModel);
+        }
     }
 }

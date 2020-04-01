@@ -20,4 +20,9 @@ namespace OrnamentsWebApplication.ViewModel
         public List<Category> FeaturedCategories { get; set; }
         public int? SortBy { get; set; }
     }
+
+    public class PriceFilteringViewModel
+    {
+        public List<Product> Products { get; set; }
+    }
 }

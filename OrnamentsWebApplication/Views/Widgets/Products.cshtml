@@ -12,7 +12,7 @@
 {
     if (!Model.IsLatestProducts)
     {
-        <ul class="flat-filter style-1 text-center max-width-682 clearfix" style="display: none;">
+        <ul class="flat-filter style-1 text-center max-width-682 clearfix">
             <li class="active"><a href="#" data-filter="*">All Product</a></li>
 
             @foreach (var category in Model.Products.Select(x => x.Category).ToList().Distinct())

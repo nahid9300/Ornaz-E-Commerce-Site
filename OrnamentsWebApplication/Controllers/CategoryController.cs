@@ -92,10 +92,14 @@ namespace OrnamentsWebApplication.Controllers
             return RedirectToAction("Create");
         }
 
-        public ActionResult ShowAllProducts()
+        public ActionResult ShowAllCategory(string search, int? pageNo)
         {
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo : 1 : 1;
+
             CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _categoryManager.GetAll();
+            categoryViewModel.pageNo = pageNo.HasValue ? pageNo.Value : 1;
+
+            categoryViewModel.Categories = _categoryManager.GetAllCategoriesForPagination(categoryViewModel.pageNo);
 
             return View(categoryViewModel);
         }

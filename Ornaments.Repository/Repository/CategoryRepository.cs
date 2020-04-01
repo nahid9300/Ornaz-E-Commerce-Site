@@ -24,6 +24,7 @@ namespace Ornaments.Repository.Repository
             {
                 aCategory.Name = category.Name;
                 aCategory.Description = category.Description;
+                aCategory.isFeatured = category.isFeatured;
             }
 
             return _dbContext.SaveChanges() > 0;
@@ -46,6 +47,18 @@ namespace Ornaments.Repository.Repository
             Category aCategory = _dbContext.Categories.FirstOrDefault(c => c.Id == id);
             _dbContext.Categories.Remove(aCategory);
             return _dbContext.SaveChanges() > 0;
+        }
+
+        public List<Category> GetFeaturedCategories()
+        {
+
+            return _dbContext.Categories.Where(c=>c.isFeatured).ToList();
+        }
+
+        public List<Category> GetAllCategoriesForPagination(int pageNo)
+        {
+            int pageSize = 5;
+            return _dbContext.Categories.OrderByDescending(x => x.Id).Skip((pageNo - 1) * pageSize).Take(pageSize).ToList();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,6 +38,34 @@ namespace OrnamentsWebApplication.Controllers
                 //{
                 //    result.Data = new { success = false, Message = new HttpStatusCodeResult(500) };
                 //}
+            }
+            catch (Exception ex)
+            {
+                result.Data = new { Success = false, Message = ex.Message };
+            }
+
+            return result;
+        }
+
+        public JsonResult ProductUploadImage()
+        {
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            try
+            {
+                var file = Request.Files[0];
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+                var path = Path.Combine(Server.MapPath("~/content/Design/images/Products"), fileName);
+
+                file.SaveAs(path);
+
+                result.Data = new { Success = true, ImageURL = string.Format("/content/Design/images/Products/{0}", fileName) };
+
+
+               
             }
             catch (Exception ex)
             {

@@ -174,11 +174,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\WidgetsController.cs" />
+    <Compile Include="EnumCode\Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,8 +192,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\ConfigViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\ProductDetailViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
+    <Compile Include="ViewModel\WidgetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Design\fonts\fontawesome-webfont.svg" />
@@ -281,6 +289,7 @@
     <Content Include="Content\Design\images\logo.png" />
     <Content Include="Content\Design\images\maps\map_icon.png" />
     <Content Include="Content\Design\images\mega-menu\1.jpg" />
+    <Content Include="Content\Design\images\Ornaz.png" />
     <Content Include="Content\Design\images\parallax\bg-parallax1.jpg" />
     <Content Include="Content\Design\images\parallax\bg-parallax2.jpg" />
     <Content Include="Content\Design\images\parallax\bg-parallax3.jpg" />
@@ -408,6 +417,7 @@
     <Content Include="Content\Design\images\slider\slider-bg-5.jpg" />
     <Content Include="Content\Design\images\slider\slider-bg-7.jpg" />
     <Content Include="Content\Design\images\slider\slider-bg-8.jpg" />
+    <Content Include="Content\Design\images\system\placeholder-image.png" />
     <Content Include="Content\Design\images\wordpress-version.png" />
     <Content Include="Content\Design\javascript\bootstrap.min.js" />
     <Content Include="Content\Design\javascript\equalize.min.js" />
@@ -535,10 +545,19 @@
     <Content Include="Views\Product\Add.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Shop\Checkout.cshtml" />
+    <Content Include="Views\Config\Create.cshtml" />
+    <Content Include="Views\Config\Edit.cshtml" />
+    <Content Include="Views\Shared\Product\_ProductDetails.cshtml" />
+    <Content Include="Views\Product\ShowAllProduct.cshtml" />
+    <Content Include="Views\Widgets\Products.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Design\images\about\" />
+    <Folder Include="Content\Design\images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -557,6 +576,10 @@
     <ProjectReference Include="..\Ornaments.Model\Ornaments.Model.csproj">
       <Project>{615f405d-b00a-4089-9be8-df8b68c0f6bb}</Project>
       <Name>Ornaments.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ornaments.Repository\Ornaments.Repository.csproj">
+      <Project>{275C781F-94CC-4376-9196-ECABFE784939}</Project>
+      <Name>Ornaments.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

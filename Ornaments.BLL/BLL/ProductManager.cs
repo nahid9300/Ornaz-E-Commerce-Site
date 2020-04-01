@@ -38,5 +38,26 @@ namespace Ornaments.BLL.BLL
         {
             return _productRepository.Delete(id);
         }
+
+        public List<Product> GetAllProductsForPagination(int pageNo)
+        {
+            return _productRepository.GetAllProductsForPagination(pageNo);
+        }
+
+        public List<Product> GetLatesProducts(int numberOfProducts)
+        {
+            return _productRepository.GetLatesProducts(numberOfProducts); 
+        }
+
+        public List<Product> GetAllProductsForWidget(int pageNo, int pageSize)
+        {
+            return _productRepository.GetAllProductsForWidget(pageNo, pageSize);
+        }
+
+        public List<Product> GetRelatedProductByCategory(int categoryID, int pageSize)
+        {
+            return _productRepository.GetRelatedProductByCategory(categoryID, pageSize);
+        }
+
     }
 }

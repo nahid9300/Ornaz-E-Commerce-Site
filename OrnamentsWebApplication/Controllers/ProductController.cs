@@ -119,12 +119,35 @@ namespace OrnamentsWebApplication.Controllers
             return RedirectToAction("Add");
         }
 
-        public ActionResult ShowAllCategory()
+       
+        public ActionResult ShowAllProduct(string search, int? pageNo)
         {
-            CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _categoryManager.GetAll();
+            pageNo = pageNo.HasValue ? pageNo.Value>0? pageNo : 1: 1;
 
-            return View(categoryViewModel);
+
+            ProductViewModel productViewModel = new ProductViewModel();
+
+            productViewModel.pageNo = pageNo.HasValue ? pageNo.Value : 1;
+            productViewModel.Products = _productManager.GetAllProductsForPagination(productViewModel.pageNo);
+
+            return PartialView(productViewModel);
         }
+
+        [HttpGet]
+        public ActionResult Details(int Id)
+
+        {
+            ProductViewModel productViewModel=new ProductViewModel();
+            ProductDetailViewModel productDetailViewModel=new ProductDetailViewModel();
+
+            productViewModel.Products = _productManager.GetAll();
+            productViewModel.Product = _productManager.GetById(Id);
+
+            
+
+
+            return View(productViewModel);
+        }
+
     }
 }

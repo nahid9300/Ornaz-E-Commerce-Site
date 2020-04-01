@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\CategoryManager.cs" />
+    <Compile Include="BLL\ConfigurationManager.cs" />
     <Compile Include="BLL\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

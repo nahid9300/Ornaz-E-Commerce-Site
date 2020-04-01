@@ -14,7 +14,7 @@ namespace OrnamentsWebApplication.Controllers
         public ActionResult Index()
         {
             HomeViewModel homeViewModel=new HomeViewModel();
-            homeViewModel.Categories = _categoryManager.GetAll();
+            homeViewModel.Categories = _categoryManager.GetFeaturedCategories();
             return View(homeViewModel);
         }
 

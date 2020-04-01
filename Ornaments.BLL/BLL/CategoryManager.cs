@@ -35,5 +35,15 @@ namespace Ornaments.BLL.BLL
         {
             return _categoryRepository.Delete(id);
         }
+
+        public List<Category> GetFeaturedCategories()
+        {
+            return _categoryRepository.GetFeaturedCategories();
+        }
+
+        public List<Category> GetAllCategoriesForPagination(int pageNo)
+        {
+            return _categoryRepository.GetAllCategoriesForPagination(pageNo);
+        }
     }
 }

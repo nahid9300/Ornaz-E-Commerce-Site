@@ -1,0 +1,65 @@
+﻿@model OrnamentsWebApplication.ViewModel.ConfigViewModel
+
+
+<h2>Create</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Social Media Name</label>
+        <input type="text" name="Key" value="@Model.Key" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>URL</label>
+        <input type="text" name="Value" value="@Model.Value" class="form-control">
+    </div>
+    <div class="form-group">
+        
+        @if (ViewBag.message != null)
+        {
+            <h4 class="text-primary">  @ViewBag.message</h4>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<section>
+    <div class="container">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">SL</th>
+                    <th scope="col">Social Media Name</th>
+                    <th scope="col">URL</th>
+                    
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 1; }
+                @foreach (var config in Model.Configs)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@config.Key</td>
+                        <td>@config.Value</td>
+               
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { Key = config.Key }) |
+                            @Html.ActionLink("Delete", "Delete", new { Key = config.Key })
+                        </td>
+                    </tr>
+
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+

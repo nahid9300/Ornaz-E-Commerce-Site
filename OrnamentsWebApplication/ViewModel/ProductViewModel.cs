@@ -9,10 +9,12 @@ namespace OrnamentsWebApplication.ViewModel
 {
     public class ProductViewModel
     {
+        public int pageNo { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public string ImageURL { get; set; }
 
         public int CategoryId { set; get; }
         public Category Category { get; set; }
@@ -20,7 +22,7 @@ namespace OrnamentsWebApplication.ViewModel
 
         
         public List<Product> Products { set; get; }
-
         
+        public Product Product { get; set; }
     }
 }

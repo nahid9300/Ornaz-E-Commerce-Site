@@ -10,5 +10,9 @@ namespace OrnamentsWebApplication.ViewModel
     {
         public List<Category> Categories { get; set; }
         public List<Product> Products { get; set; }
+
+        public string Key { get; set; }
+        public string Value { get; set; }
+        public List<Config> Configs { get; set; }
     }
 }

@@ -26,8 +26,11 @@ namespace OrnamentsWebApplication
             cfg.CreateMap<CategoryViewModel, Category>();
             cfg.CreateMap<Category, CategoryViewModel>();
 
-                cfg.CreateMap<ProductViewModel, Product>();
-                cfg.CreateMap<Product, ProductViewModel>();
+             cfg.CreateMap<ProductViewModel, Product>();
+             cfg.CreateMap<Product, ProductViewModel>();
+
+             cfg.CreateMap<ConfigViewModel, Config>();
+             cfg.CreateMap<Config, ConfigViewModel>();
 
 
 

@@ -13,8 +13,10 @@ namespace Ornaments.Model.Model
         public string Description { get; set; }
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         public decimal Price { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

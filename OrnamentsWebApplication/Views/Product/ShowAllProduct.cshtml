@@ -23,7 +23,7 @@
                 <tr>
                     <td>@(i++)</td>
                     <td>@products.Name</td>
-                    <td>@products.CategoryId</td>
+                    <td>@products.Category.Name</td>
                     <td>@products.Price</td>
                     <td>@products.Description</td>
 
@@ -41,7 +41,7 @@
             </tbody>
         </table>
         
-        @*<div>
+        <div>
 
             @if (Model.pageNo != 1)
 
@@ -51,7 +51,7 @@
             
 
             <button class="pageButtons" data-pageNo="@(Model.pageNo + 1)">Next</button>
-        </div>*@
+        </div>
     </div>
 </section>
 

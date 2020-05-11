@@ -10,6 +10,7 @@ using AutoMapper;
 
 namespace OrnamentsWebApplication.Controllers
 {
+    
     public class CategoryController : Controller
     {
         string message = "";

@@ -55,5 +55,7 @@ namespace Ornaments.Repository.Repository
             return _dbContext.Configurations.FirstOrDefault((c => c.Key == Key));
         }
 
+
+
     }
 }

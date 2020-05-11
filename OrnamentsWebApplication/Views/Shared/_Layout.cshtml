@@ -36,8 +36,8 @@
 
 
     <!-- Favicon and touch icons  -->
-    <link href="icon/favicon.png" rel="shortcut icon">
-
+    <link href="~/favicon.ico" rel="shortcut icon">
+   
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
         <script src="javascript/respond.min.js"></script>
@@ -47,6 +47,7 @@
 
     <script src="~/Content/Design/javascript/jquery.min.js"></script>
     <script src="~/Content/Design/javascript/jquery-ui.js"></script>
+    
 
 </head>
 <body class="header_sticky header-style-1 has-menu-extra">
@@ -74,9 +75,15 @@
                                 <button type="submit" class="header-search-submit" title="Search">Search</button>
                             </form>
                         </li>
-                        <li class="box-login">
-                            <a class="icon_login" href="#"></a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="box-login">
+                                <a class="icon_login" href="#">
+                                    @User.Identity.Name
+                                </a>
+                            </li>
+                        }
+                        
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" href="#"><span>3</span></a>
                             <div class="nav-shop-cart">
@@ -263,8 +270,8 @@
     <script src="~/Content/Design/javascript/jquery.hoverdir.js"></script>
     <script src="~/Content/Design/javascript/owl.carousel.min.js"></script>
     <script src="~/Content/Design/javascript/equalize.min.js"></script>
-    <script src="~/Content/Design/javascript/gmap3.min.js"></script>
-    <script src="~/Content/Design/https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&region=GB"></script>
+    @*<script src="~/Content/Design/javascript/gmap3.min.js"></script>
+    <script src="~/Content/Design/https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&region=GB"></script>*@
     
 
     <script src="~/Content/Design/javascript/jquery.cookie.js"></script>

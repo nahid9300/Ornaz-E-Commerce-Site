@@ -179,5 +179,47 @@ namespace Ornaments.Repository.Repository
 
             return products.Count;
         }
+
+        public int GetProductsCount(string search)
+        {
+            
+            
+                if (!string.IsNullOrEmpty(search))
+                {
+                    return _dbContext.Products.Where(product => product.Name != null &&
+                                                             product.Name.ToLower().Contains(search.ToLower()))
+                        .Count();
+                }
+                else
+                {
+                    return _dbContext.Products.Count();
+                }
+        }
+
+        public List<Product> GetProducts(string search, int pageNo, int pageSize)
+        {
+           
+            
+                if (!string.IsNullOrEmpty(search))
+                {
+                    return _dbContext.Products.Where(product => product.Name != null &&
+                                                             product.Name.ToLower().Contains(search.ToLower()))
+                        .OrderBy(x => x.Id)
+                        .Skip((pageNo - 1) * pageSize)
+                        .Take(pageSize)
+                        .Include(x => x.Category)
+                        .ToList();
+                }
+                else
+                {
+                    return _dbContext.Products
+                        .OrderBy(x => x.Id)
+                        .Skip((pageNo - 1) * pageSize)
+                        .Take(pageSize)
+                        .Include(x => x.Category)
+                        .ToList();
+                }
+            
+        }
     }
 }

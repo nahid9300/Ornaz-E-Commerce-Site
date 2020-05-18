@@ -25,4 +25,11 @@ namespace OrnamentsWebApplication.ViewModel
         
         public Product Product { get; set; }
     }
+    public class ProductSearchViewModel
+    {
+        public List<Product> Products { get; set; }
+        public string SearchTerm { get; set; }
+
+        public Pager Pager { get; set; }
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,49 @@ namespace Ornaments.Repository.Repository
         {
             int pageSize = 5;
             return _dbContext.Categories.OrderByDescending(x => x.Id).Skip((pageNo - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public int GetCategoriesCount(string search)
+        {
+           
+            
+                if (!string.IsNullOrEmpty(search))
+                {
+                    return _dbContext.Categories.Where(category => category.Name != null &&category.Name.ToLower().Contains(search.ToLower())).Count();
+                }
+                else
+                {
+                    return _dbContext.Categories.Count();
+                }
+            
+        }
+
+        public List<Category> GetCategories(string search, int pageNo)
+        {
+            int pageSize = 3;
+
+           
+            
+                if (!string.IsNullOrEmpty(search))
+                {
+                    return _dbContext.Categories.Where(category => category.Name != null &&
+                                                                category.Name.ToLower().Contains(search.ToLower()))
+                        .OrderBy(x => x.Id)
+                        .Skip((pageNo - 1) * pageSize)
+                        .Take(pageSize)
+                        .Include(x => x.Products)
+                        .ToList();
+                }
+                else
+                {
+                    return _dbContext.Categories
+                        .OrderBy(x => x.Id)
+                        .Skip((pageNo - 1) * pageSize)
+                        .Take(pageSize)
+                        .Include(x => x.Products)
+                        .ToList();
+                }
+            
         }
     }
 }

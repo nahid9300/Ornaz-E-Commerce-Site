@@ -3,3 +3,4 @@ C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Model\bin\Debug\O
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Model\obj\Debug\Ornaments.Model.csproj.CoreCompileInputs.cache
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Model\obj\Debug\Ornaments.Model.dll
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Model\obj\Debug\Ornaments.Model.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.Model\obj\Debug\Ornaments.Model.csprojAssemblyReference.cache

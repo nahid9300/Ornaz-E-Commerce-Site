@@ -59,5 +59,15 @@ namespace Ornaments.BLL.BLL
             return _productRepository.GetRelatedProductByCategory(categoryID, pageSize);
         }
 
+        public int GetProductsCount(string search)
+        {
+            return _productRepository.GetProductsCount(search);
+        }
+
+        public List<Product> GetProducts(string search, int pageNo, int pageSize)
+        {
+            return _productRepository.GetProducts(search, pageNo, pageSize);
+        }
+
     }
 }

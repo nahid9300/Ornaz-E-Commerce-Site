@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using OrnamentsWebApplication.ViewModel;
 using AutoMapper;
+using Ornaments.Repository.Repository;
 
 namespace OrnamentsWebApplication.Controllers
 {
@@ -17,9 +18,30 @@ namespace OrnamentsWebApplication.Controllers
         ProductManager _productManager = new ProductManager();
         CategoryManager _categoryManager = new CategoryManager();
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ProductTable(string search, int? pageNo)
+        {
+            var pageSize = ConfigurationService.Instance.PageSize();
+
+            ProductSearchViewModel model = new ProductSearchViewModel();
+            model.SearchTerm = search;
+
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
+
+            var totalRecords = _productManager.GetProductsCount(search);
+            model.Products = _productManager.GetProducts(search, pageNo.Value, pageSize);
+
+            model.Pager = new Pager(totalRecords, pageNo, pageSize);
+
+            return PartialView(model);
+        }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             ProductViewModel productViewModel = new ProductViewModel();
 
@@ -32,27 +54,15 @@ namespace OrnamentsWebApplication.Controllers
 
             productViewModel.Products = _productManager.GetAll();
 
-            return View(productViewModel);
+            return PartialView(productViewModel);
         }
 
         [HttpPost]
-        public ActionResult Add(ProductViewModel productViewModel)
+        public ActionResult Create(ProductViewModel productViewModel)
         {
-            string message = "";
-
-
             Product product = Mapper.Map<Product>(productViewModel);
-            if (_productManager.SaveProduct(product))
-            {
-                message = "saved";
-            }
-            else
-            {
-                message = "not saved";
-            }
-
-            ViewBag.message = message;
-
+            _productManager.SaveProduct(product);
+            
             productViewModel.Products = _productManager.GetAll();
 
             productViewModel.CategorySelectListItems = _categoryManager.GetAll()
@@ -62,7 +72,7 @@ namespace OrnamentsWebApplication.Controllers
                                                            Text = c.Name
                                                        }).ToList();
 
-            return View(productViewModel);
+            return RedirectToAction("ProductTable");
         }
 
 
@@ -74,49 +84,35 @@ namespace OrnamentsWebApplication.Controllers
             Product product = _productManager.GetById(Id);
             ProductViewModel productViewModel = Mapper.Map<ProductViewModel>(product);
 
+            productViewModel.CategorySelectListItems = _categoryManager.GetAll()
+                                                        .Select(c => new SelectListItem()
+                                                        {
+                                                            Value = c.Id.ToString(),
+                                                            Text = c.Name
+                                                        }).ToList();
 
-            productViewModel.Products = _productManager.GetAll();
-
-
-            return View(productViewModel);
+            return PartialView(productViewModel);
         }
 
         [HttpPost]
         public ActionResult Edit(ProductViewModel productViewModel)
         {
-            string message = "";
+            
             Product product = Mapper.Map<Product>(productViewModel);
-            if (_productManager.Update(product))
-            {
-                message = "Updated";
-            }
-            else
-            {
-                message = "Not Updated";
-            }
-
-            ViewBag.Message = message;
-
-            productViewModel.Products = _productManager.GetAll();
-            return View(productViewModel);
+            _productManager.Update(product);
+            return RedirectToAction("ProductTable");
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             Product product = _productManager.GetById(id);
-            string message = "";
-            if (_productManager.Delete(id))
-            {
-                message = "Delete Succsessfully!!";
-            }
-            else
-            {
-                message = "Not delete ";
-            }
-            ViewBag.Message = message;
 
-            return RedirectToAction("Add");
+            _productManager.Delete(id);
+
+
+
+            return RedirectToAction("ProductTable");
         }
 
        

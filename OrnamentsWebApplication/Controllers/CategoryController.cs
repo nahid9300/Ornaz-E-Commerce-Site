@@ -17,29 +17,35 @@ namespace OrnamentsWebApplication.Controllers
         CategoryManager _categoryManager = new CategoryManager();
         // GET: Category
         [HttpGet]
+
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
         public ActionResult Create()
         {
             CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _categoryManager.GetAll();
-            return View(categoryViewModel);
+            return PartialView(categoryViewModel);
         }
         [HttpPost]
         public ActionResult Create(CategoryViewModel categoryViewModel)
         {
-            string message = "";
-            Category category = Mapper.Map<Category>(categoryViewModel);
-            if (_categoryManager.SaveCategory(category))
+            if (ModelState.IsValid)
             {
-                message = "Category created successfully";
+                Category category = Mapper.Map<Category>(categoryViewModel);
+
+                _categoryManager.SaveCategory(category);
+                return RedirectToAction("CategoryTable");
             }
             else
             {
-                message = "Category did not created";
+                return new HttpStatusCodeResult(500);
             }
-            ViewBag.Message = message;
-            categoryViewModel.Categories = _categoryManager.GetAll();
-
-            return View(categoryViewModel);
         }
 
         [HttpGet]
@@ -47,62 +53,46 @@ namespace OrnamentsWebApplication.Controllers
         {
             Category category = _categoryManager.GetById(Id);
             CategoryViewModel categoryViewModel = Mapper.Map<CategoryViewModel>(category);
-
-
-            categoryViewModel.Categories = _categoryManager.GetAll();
-
-
-            return View(categoryViewModel);
+            return PartialView(categoryViewModel);
         }
 
         [HttpPost]
         public ActionResult Edit(CategoryViewModel categoryViewModel)
         {
-            string message = "";
             Category category = Mapper.Map<Category>(categoryViewModel);
-            if (_categoryManager.Update(category))
-            {
-                message = "Updated";
-            }
-            else
-            {
-                message = "Not Updated";
-            }
-
-            ViewBag.Message = message;
-
-            categoryViewModel.Categories = _categoryManager.GetAll();
-            return View(categoryViewModel);
+            _categoryManager.Update(category);
+            return RedirectToAction("CategoryTable");
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             Category category = _categoryManager.GetById(id);
-            string message = "";
-            if (_categoryManager.Delete(id))
+            _categoryManager.Delete(id);
+
+            return RedirectToAction("CategoryTable");
+        }
+
+        public ActionResult CategoryTable(string search, int? pageNo)
+        {
+            CategorySearchViewModel categorySearchViewModel = new CategorySearchViewModel();
+            categorySearchViewModel.SearchTerm = search;
+
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
+
+            var totalRecords = _categoryManager.GetCategoriesCount(search);
+            categorySearchViewModel.Categories = _categoryManager.GetCategories(search, pageNo.Value);
+
+            if (categorySearchViewModel.Categories != null)
             {
-                message = "Delete Succsessfully!!";
+                categorySearchViewModel.Pager = new Pager(totalRecords, pageNo, 3);
+
+                return PartialView("_CategoryTable", categorySearchViewModel);
             }
             else
             {
-                message = "Not delete ";
+                return HttpNotFound();
             }
-            ViewBag.Message = message;
-
-            return RedirectToAction("Create");
-        }
-
-        public ActionResult ShowAllCategory(string search, int? pageNo)
-        {
-            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo : 1 : 1;
-
-            CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.pageNo = pageNo.HasValue ? pageNo.Value : 1;
-
-            categoryViewModel.Categories = _categoryManager.GetAllCategoriesForPagination(categoryViewModel.pageNo);
-
-            return View(categoryViewModel);
         }
     }
 }

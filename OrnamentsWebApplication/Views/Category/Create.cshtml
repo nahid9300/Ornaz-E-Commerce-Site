@@ -1,122 +1,143 @@
 ﻿@model OrnamentsWebApplication.ViewModel.CategoryViewModel
+@{
+    ViewBag.Title = "Create";
 
-
-
-<section class="container">
-
-    <h2 class="text-center">Create</h2>
-
-    <form method="post">
-        <div class="form-group">
-            <label>Category</label>
-            <input type="text" name="Name" class="form-control col-md-6" placeholder="Enter the category name">
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input type="text" name="Description" class="form-control col-md-6" placeholder="Enter description of the category">
-
-
-
-        </div>
-        <div class="form-group">
-            <label>Upload Image</label>
-            <input id="ImageURL" name="ImageURL" type="hidden" />
-            <input id="imageUpload" type="file" name="Image" accept=".png,.jpg,.jpeg" class="form-control col-md-6">
-            <div class="thumb">
-
-                <img id="categoryImage" style="margin-top: 10px">
+    var imageURL = "/Content/images/system/placeholder-image.png";
+}
+<h2>Create Category</h2>
+<form id="createCategory">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>Name <span class="text-danger">*</span></label>
+                <input class="form-control" name="Name" />
             </div>
-            <div style="margin-top: 10px">
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" />
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="hidden" id="ImageURL" name="ImageURL" />
+                <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+            </div>
+            <div class="form-group">
                 <label>Is Featured?</label>
-                <input type="radio" name="isFeatured" value="True" />True
-                <input type="radio" name="isFeatured" value="False" />False
+                <div class="input-group">
+                    <div class="radio form-control">
+                        <label><input name="isFeatured" type="radio" value="True" /> True</label>
+                    </div>
+                    <div class="radio form-control">
+                        <label><input name="isFeatured" type="radio" value="False" /> False</label>
+                    </div>
+                </div>
             </div>
-
-
-            @if (ViewBag.message != null)
-            {
-                <h4 class="text-primary"> @ViewBag.message</h4>
-            }
         </div>
-
-        <button type="submit" class="button">Submit</button>
-    </form>
-</section>
-<br />
-<br />
-<section>
-    <div class="container">
-        <table class="table table-striped table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">SL</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">ImageURL</th>
-                    <th scope="col">IsFeatured</th>
-                    
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{int i = 1; }
-                @foreach (var categories in Model.Categories)
-                {
-                    <tr>
-                        <td>@(i++)</td>
-                        <td>@categories.Name</td>
-                        <td>@categories.Description</td>
-                        <td>@categories.ImageURL</td>
-                        <td>@categories.isFeatured</td>
-                        
-
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = categories.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = categories.Id })
-                        </td>
-                    </tr>
-
-                }
-
-
-            </tbody>
-        </table>
+        <div class="col-md-4">
+            <div class="thumb">
+                <img class="img-thumbnail img-fluid" id="categoryImage" src="@imageURL" />
+            </div>
+        </div>
     </div>
-</section>
-
+    <button id="saveBtn" type="button" class="btn btn-primary">Save</button>
+    <button id="cancelBtn" type="button" class="btn btn-primary">Cancel</button>
+</form>
 <script>
-    $("#imageUpload").change(function () {
-        var element = this;
+	$("#imageUpload").change(function () {
+		var element = this;
 
-        var formData = new FormData();
+		var formData = new FormData();
 
-        var totalFiles = element.files.length;
+		var totalFiles = element.files.length;
 
-        for (var i = 0; i < totalFiles; i++) {
-            var file = element.files[i];
-            formData.append("Photo", file);
-        }
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
 
-        $.ajax({
-            type: 'POST',
-            url: '/Shared/UploadImage',
-            dataType: 'json',
-            data: formData,
-            contentType: false,
-            processData: false
+		$.ajax({
+			type: 'POST',
+			url: '@Url.Action("UploadImage", "Shared")',
+			dataType: 'json',
+			data: formData,
+			contentType: false,
+			processData: false
+		})
+        .done(function (response) {
+        	console.log(response);
+
+        	if(response.Success)
+        	{
+        		$("#ImageURL").val(response.ImageURL);
+        		$("#categoryImage").attr("src", response.ImageURL);
+        	}
         })
-            
-        .done(function(response) {
-            console.log(response);
-          
-            if (response.Success) {
-                $("#ImageURL").val(response.ImageURL);
-                $("#categoryImage").attr("src", response.ImageURL);
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+    $('#createCategory').validate({
+        rules: {
+            Name: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+            },
+            Description: {
+                maxlength: 500				
             }
-        })
-            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("FAIL");
-            });
+        },
+        messages: {
+            Name: {
+                required: 'Name is required',
+                minlength: 'Minimum Length is 5',
+                maxlength: 'Maximum Length is 50'
+            },
+            Description: {
+                maxlength: 'Maximum Length is 500'
+            }
+        }
     });
+
+	$("#saveBtn").click(function () {
+		
+		if ($("#createCategory").valid()) {
+			$.ajax({
+				type: 'POST',
+				url: '@Url.Action("Create", "Category")',
+				data: $("#createCategory").serialize()
+			})
+			.done(function (response) {
+				$("#tableContiner").html(response);
+				$("#actionContainer").html("");
+				focusAction("tableContiner");
+			})
+			.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+				swal({
+					title: "Warning",
+					text: "Please enter all required fields.",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+				});
+			});
+		}
+		else {
+			swal({
+				title: "Warning",
+				text: "Please enter all valid data in fields.",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			});
+		}
+	});
+
+	$("#cancelBtn").click(function () {
+		$("#actionContainer").html("");
+
+		focusAction("tableContiner");
+	});
 </script>
 

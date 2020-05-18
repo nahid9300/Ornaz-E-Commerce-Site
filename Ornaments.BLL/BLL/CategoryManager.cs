@@ -45,5 +45,15 @@ namespace Ornaments.BLL.BLL
         {
             return _categoryRepository.GetAllCategoriesForPagination(pageNo);
         }
+
+        public int GetCategoriesCount(string search)
+        {
+            return _categoryRepository.GetCategoriesCount(search);
+        }
+
+        public List<Category> GetCategories(string search, int pageNo)
+        {
+            return _categoryRepository.GetCategories(search, pageNo);
+        }
     }
 }

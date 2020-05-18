@@ -12,6 +12,7 @@ namespace Ornaments.Repository.Repository
     public class ConfigurationRepository
     {
         OrnamentDbContext _dbContext=new OrnamentDbContext();
+
         public bool Add(Config config)
         {
             _dbContext.Configurations.Add(config);

@@ -53,8 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ConfigurationRepository.cs" />
     <Compile Include="Repository\ConfigurationService.cs" />
+    <Compile Include="Repository\OrdersRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\ShopRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ornaments.DatabaseContext\Ornaments.DatabaseContext.csproj">

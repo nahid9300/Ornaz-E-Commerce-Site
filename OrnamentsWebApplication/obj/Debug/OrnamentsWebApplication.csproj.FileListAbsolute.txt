@@ -118,3 +118,6 @@ C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj
 C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.csproj.CopyComplete
 C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.dll
 C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.Migrations.InitialCreate.resources
+C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.csproj.GenerateResource.cache
+C:\Users\Prince\source\repos\OrnamentsWebApplication\OrnamentsWebApplication\obj\Debug\OrnamentsWebApplication.Migrations.AddedNewPropertiesToUser.resources

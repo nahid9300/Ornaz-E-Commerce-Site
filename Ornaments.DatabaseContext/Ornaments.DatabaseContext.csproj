@@ -71,6 +71,14 @@
     <Compile Include="Migrations\202003101536151_Config.Designer.cs">
       <DependentUpon>202003101536151_Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005131608033_new order properties.cs" />
+    <Compile Include="Migrations\202005131608033_new order properties.Designer.cs">
+      <DependentUpon>202005131608033_new order properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005141533548_OrderItemQuantity.cs" />
+    <Compile Include="Migrations\202005141533548_OrderItemQuantity.Designer.cs">
+      <DependentUpon>202005141533548_OrderItemQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -99,6 +107,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003101536151_Config.resx">
       <DependentUpon>202003101536151_Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005131608033_new order properties.resx">
+      <DependentUpon>202005131608033_new order properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005141533548_OrderItemQuantity.resx">
+      <DependentUpon>202005141533548_OrderItemQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

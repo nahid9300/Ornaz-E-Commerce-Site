@@ -80,23 +80,13 @@
                             <li class="box-login">
                                 <a class="icon_login" href="#">
                                     @User.Identity.Name
+                                    
                                 </a>
                             </li>
                         }
                         
                         <li class="box-cart nav-top-cart-wrapper">
-                            <a class="icon_cart nav-cart-trigger active" href="#"><span>3</span></a>
-                            <div class="nav-shop-cart">
-                                <div class="widget_shopping_cart_content">
-                                    <div class="woocommerce-min-cart-wrap">
-                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                            <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                <span>No Items in Shopping Cart</span>
-                                            </li>
-                                        </ul>
-                                    </div><!-- /.widget_shopping_cart_content -->
-                                </div>
-                            </div><!-- /.nav-shop-cart -->
+                            <a class="icon_cart nav-cart-trigger active" href="@Url.Action("Checkout","Shop")"><span id="cartProductsCount">0</span></a>
                         </li>
                     </ul><!-- /.menu-extra -->
                     <div class="nav-wrap">
@@ -104,9 +94,6 @@
                             <ul class="menu">
                                 <li class="active">
                                     <a href="@Url.Action("Index","Home")">HOME</a>
-                                    <ul class="submenu">
-                                       
-                                    </ul>
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Index","Shop")">SHOP</a>
@@ -137,10 +124,12 @@
                                
                                 <li>
                                     <a href="@Url.Action("Checkout","Shop")">CHECKOUT</a>
-                                    <ul class="submenu right-submenu">
+                                    
+
+                                    @*<ul class="submenu right-submenu">
                                         <li><a href="contact.html">Contact Style 1</a></li>
                                         <li><a href="contact-v2.html">Contact Style 2</a></li>
-                                    </ul>
+                                    </ul>*@
                                 </li>
                             </ul>
                         </nav><!-- /.mainnav -->

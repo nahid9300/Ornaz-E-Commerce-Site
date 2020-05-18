@@ -18,3 +18,5 @@ C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\o
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.csproj.CopyComplete
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.dll
 C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.pdb
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.Migrations.neworderproperties.resources
+C:\Users\Prince\source\repos\OrnamentsWebApplication\Ornaments.DatabaseContext\obj\Debug\Ornaments.DatabaseContext.Migrations.OrderItemQuantity.resources

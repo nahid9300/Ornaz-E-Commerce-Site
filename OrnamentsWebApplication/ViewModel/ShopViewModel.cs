@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Ornaments.Model.Model;
+using OrnamentsWebApplication.Models;
 
 namespace OrnamentsWebApplication.ViewModel
 {
@@ -11,6 +12,8 @@ namespace OrnamentsWebApplication.ViewModel
         public List<Product> CartProducts { get; set; }
 
         public List<int> CartProductsIds { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 
     public class ShopViewModel

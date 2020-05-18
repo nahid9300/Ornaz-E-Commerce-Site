@@ -40,7 +40,7 @@ namespace Ornaments.Repository.Repository
         {
                 var pageSizeConfig = _dbContext.Configurations.Find("PageSize");
 
-                return pageSizeConfig != null ? int.Parse(pageSizeConfig.Value) : 5;
+                return pageSizeConfig != null ? int.Parse(pageSizeConfig.Value) : 3;
             
         }
 

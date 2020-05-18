@@ -1,10 +1,6 @@
 ﻿@model OrnamentsWebApplication.ViewModel.HomeViewModel
-@{
-    var firstCategory = Model.Categories[0];
-    var secondCategory = Model.Categories[1];
-    var thirdCategory = Model.Categories[2];
-    var fourthCategory = Model.Categories[3];
-}
+
+
 <!-- SLIDER -->
 <div class="rev_slider_wrapper fullwidthbanner-container">
     <div id="rev-slider1" class="rev_slider fullwidthabanner">
@@ -183,83 +179,92 @@
     </div>
 </div>
 <!-- END SLIDER -->
-<!-- IMAGE BOX -->
-<section class="flat-row row-image-box">
-    <div class="container">
-        <div class="row gutter-10">
-            <div class="col-sm-6 col-md-4">
-                <div class="flat-image-box style-1 data-effect div-h22 clearfix">
-                    <div class="item data-effect-item">
-                        <div class="inner">
-                            @if (firstCategory!=null)
-                            {
-                                <div class="thumb">
-                                    <img src="@firstCategory.ImageURL" alt="Image">
-                                    <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@firstCategory.Name</a>
-                                    </div>
-                                    <div class="overlay-effect bg-color-1"></div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /.col-md-4 -->
-            <div class="col-sm-6 col-md-4">
-                <div class="flat-image-box style-1 row2 data-effect clearfix">
-                    <div class="item data-effect-item">
-                        <div class="inner">
-                            @if (secondCategory!=null)
-                            {
-                                <div class="thumb">
-                                    <img src="@secondCategory.ImageURL" alt="Image">
-                                    <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@secondCategory.Name</a>
-                                    </div>
-                                    <div class="overlay-effect bg-color-1"></div>
-                                </div>
-                            }
-                        </div>
-                    </div>
 
-                    <div class="item data-effect-item">
-                        <div class="inner">
-                            @if (thirdCategory!=null)
-                            {
-                                <div class="thumb">
-                                    <img src="@thirdCategory.ImageURL" alt="Image">
-                                    <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@thirdCategory.Name</a>
+@if (Model.Categories != null && Model.Categories.Count >= 4)
+{
+    var firstCategory = Model.Categories[0];
+    var secondCategory = Model.Categories[1];
+    var thirdCategory = Model.Categories[2];
+    var fourthCategory = Model.Categories[3];
+    <!-- IMAGE BOX -->
+    <section class="flat-row row-image-box">
+        <div class="container">
+            <div class="row gutter-10">
+                <div class="col-sm-6 col-md-4">
+                    <div class="flat-image-box style-1 data-effect div-h22 clearfix">
+                        <div class="item data-effect-item">
+                            <div class="inner">
+                                @if (firstCategory != null)
+                                {
+                                    <div class="thumb">
+                                        <img src="@firstCategory.ImageURL" alt="Image">
+                                        <div class="elm-btn">
+                                            <a href="#" class="themesflat-button bg-white width-150">@firstCategory.Name</a>
+                                        </div>
+                                        <div class="overlay-effect bg-color-1"></div>
                                     </div>
-                                    <div class="overlay-effect bg-color-1"></div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div><!-- /.col-md-4 -->
-            <div class="col-sm-6 col-md-4">
-                <div class="flat-image-box style-1 data-effect div-h20 clearfix">
-                    <div class="item data-effect-item">
-                        <div class="inner">
-                            @if (fourthCategory!=null)
-                            {
-                                <div class="thumb">
-                                    <img src="@fourthCategory.ImageURL" alt="Image">
-                                    <div class="elm-btn">
-                                        <a href="#" class="themesflat-button bg-white width-150">@fourthCategory.Name</a>
+                </div><!-- /.col-md-4 -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="flat-image-box style-1 row2 data-effect clearfix">
+                        <div class="item data-effect-item">
+                            <div class="inner">
+                                @if (secondCategory != null)
+                                {
+                                    <div class="thumb">
+                                        <img src="@secondCategory.ImageURL" alt="Image">
+                                        <div class="elm-btn">
+                                            <a href="#" class="themesflat-button bg-white width-150">@secondCategory.Name</a>
+                                        </div>
+                                        <div class="overlay-effect bg-color-1"></div>
                                     </div>
-                                    <div class="overlay-effect bg-color-1"></div>
-                                </div>
-                            }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="item data-effect-item">
+                            <div class="inner">
+                                @if (thirdCategory != null)
+                                {
+                                    <div class="thumb">
+                                        <img src="@thirdCategory.ImageURL" alt="Image">
+                                        <div class="elm-btn">
+                                            <a href="#" class="themesflat-button bg-white width-150">@thirdCategory.Name</a>
+                                        </div>
+                                        <div class="overlay-effect bg-color-1"></div>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div><!-- /.col-md-4 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section>
-<!-- END IMAGE BOX -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="flat-image-box style-1 data-effect div-h20 clearfix">
+                        <div class="item data-effect-item">
+                            <div class="inner">
+                                @if (fourthCategory != null)
+                                {
+                                    <div class="thumb">
+                                        <img src="@fourthCategory.ImageURL" alt="Image">
+                                        <div class="elm-btn">
+                                            <a href="#" class="themesflat-button bg-white width-150">@fourthCategory.Name</a>
+                                        </div>
+                                        <div class="overlay-effect bg-color-1"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- END IMAGE BOX -->
+}
+
 <!-- PRODUCT NEW -->
 <section class="flat-row row-product-new">
     <div class="container">

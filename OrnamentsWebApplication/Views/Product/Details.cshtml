@@ -84,22 +84,22 @@
                                 </div>
 
                                 <div class="product-quantity">
-                                    <div class="quantity">
+                                    @*<div class="quantity">
                                         <input type="text" value="1" name="quantity-number" class="quantity-number">
                                         <span class="inc quantity-button">+</span>
                                         <span class="dec quantity-button">-</span>
-                                    </div>
+                                    </div>*@
                                     <div class="add-to-cart">
-                                        <a href="#">ADD TO CART</a>
+                                        <a class="productAddToCart" data-id="@Model.Product.Id" href="#">ADD TO CART</a>
                                     </div>
-                                    <div class="box-like">
+                                    @*<div class="box-like">
                                         <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                                    </div>
+                                    </div>*@
                                 </div>
                                 <div class="product-categories">
                                     <span>Categories: </span><a href="#">@Model.Product.Category.Name</a>
                                 </div>
-                                <div class="product-tags">
+                                @*<div class="product-tags">
                                     <span>Tags: </span><a href="#">Dress,</a> <a href="#">Fashion,</a> <a href="#">Furniture,</a> <a href="#">Lookbok</a>
                                 </div>
                                 <ul class="flat-socials">
@@ -108,7 +108,7 @@
                                     <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
+                                </ul>*@
                             </div>
                         </div>
                     </div><!-- /.product-detail -->
@@ -119,6 +119,7 @@
     <!-- /.flat-row -->
 
     <section class="flat-row shop-detail-content">
+       
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -134,77 +135,52 @@
                                     <div class="inner max-width-83 padding-top-33">
                                         <ol class="review-list">
                                             <li class="review">
-                                                <div class="thumb">
-                                                    <img src="images/avatar-1.png" alt="Image">
-                                                </div>
                                                 <div class="text-wrap">
-                                                    <div class="review-meta">
-                                                        <h5 class="name">Sophia Rosla</h5>
-                                                        <div class="flat-star style-1">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
+                                                    
+                                                    @if (Model.Reviews != null && Model.Reviews.Count > 0)
+                                                    {
+                                                        foreach (var review in Model.Reviews)
+                                                        {
+                                                            <div class="review-meta">
+                                                                <h5 class="name">@review.name</h5>
+                                                            </div>
+                                                            <div class="review-text">
+                                                                <p>@review.reviewDetails.</p>
+                                                            </div>
+                                                        }
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <div class="review-text">
+                                                            <p>There are no review of this product.</p>
                                                         </div>
-                                                    </div>
-                                                    <div class="review-text">
-                                                        <p>I wanted to thank you so much for the rug we have received it really is beautiful and expertly made. I will be recommending you to all our friends.</p>
-                                                    </div>
+                                                    }
+                                                    
                                                 </div>
+                                                
+
                                             </li><!--  /.review    -->
-                                            <li class="review">
-                                                <div class="thumb">
-                                                    <img src="images/avatar.png" alt="Image">
-                                                </div>
-                                                <div class="text-wrap">
-                                                    <div class="review-meta">
-                                                        <h5 class="name">Jayne Haughton</h5>
-                                                        <div class="flat-star style-1">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="review-text">
-                                                        <p class="line-height-28">Customer service is very important part of the buying experience to us and we must say that we have found Utility's to be impressive - we will certainly look to buy again in future.</p>
-                                                    </div>
-                                                </div>
-                                            </li><!--  /.review    -->
+                                            <!--  /.review    -->
                                         </ol><!-- /.review-list -->
                                         <div class="comment-respond review-respond" id="respond">
                                             <div class="comment-reply-title margin-bottom-14">
                                                 <h5>Write a review</h5>
                                                 <p>Your email address will not be published. Required fields are marked *</p>
                                             </div>
-                                            <form novalidate="" class="comment-form review-form" id="commentform" method="post" action="#">
-                                                <p class="flat-star style-2">
-                                                    <label>Rating*:</label>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </p>
+                                            <form novalidate="" class="comment-form review-form" id="commentform">
+
+                                                <input type="hidden" name="ProductID" value="@Model.Product.Id"/>
+
                                                 <p class="comment-form-comment">
                                                     <label>Review*</label>
-                                                    <textarea class="" tabindex="4" name="comment" required> </textarea>
+                                                    <textarea class="" id="review" tabindex="4" name="reviewDetails" required placeholder="Write your review"> </textarea>
                                                 </p>
-                                                <p class="comment-name">
-                                                    <label>Name*</label>
-                                                    <input type="text" aria-required="true" size="30" value="" name="name" id="name">
-                                                </p>
-                                                <p class="comment-email">
-                                                    <label>Email*</label>
-                                                    <input type="email" size="30" value="" name="email" id="email">
-                                                </p>
-                                                <p class="comment-form-notify clearfix">
-                                                    <input type="checkbox" name="check-notify" id="check-notify"> <label for="check-notify">Notify me of new posts by email</label>
-                                                </p>
+
+
+
                                                 <p class="form-submit">
-                                                    <button class="comment-submit">Submit</button>
+                                                    <button id="placeReview" type="button" class="comment-submit">Leave Review</button>
                                                 </p>
                                             </form>
                                         </div><!-- /.comment-respond -->
@@ -216,8 +192,9 @@
                 </div>
             </div>
         </div>
-    </section>
 
+
+    </section>
 
     <section class="flat-row shop-related">
         <div class="container">
@@ -228,12 +205,69 @@
                     </div>
 
                     @{
-                        Html.RenderAction("Products", "Widgets", new{ isLatestProducts=false, categoryID=Model.Product.Category.Id });
+                        Html.RenderAction("Products", "Widgets", new { isLatestProducts = false, categoryID = Model.Product.Category.Id });
                     }
                 </div>
             </div><!-- /.row -->
         </div>
     </section>
-}
+        }
 
-<!-- /.shop-detail-content -->
+        <!-- /.shop-detail-content -->
+<script>
+    //$(".pageDataLink").click(function () {
+    //    var url = $(this).attr("data-href");
+    //    if (url != "" || url != undefined) {
+    //        GetData(url);
+    //    }
+    //});
+
+
+    var products;
+    $(".productAddToCart").click(function () {
+        var existingCookieData = $.cookie('CartProducts');
+
+        if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null)
+        {
+            products = existingCookieData.split('-');
+        }
+        else {
+            products = [];
+        }
+
+        var productID = $(this).attr('data-id');
+
+        products.push(productID);
+
+        $.cookie('CartProducts', products.join('-'), { path: '/' });
+
+        updateCartProducts();
+
+        swal("Done", "Product Added to Cart!", "success");
+    });
+
+</script>
+
+<script>
+    $("#placeReview").click(function () {
+        $.ajax({
+            url: '@Url.Action("GetReview", "Review")',
+            type:"post",
+            data: $("#commentform").serialize() 
+            })
+            .done(function (response) {
+                if(response.Success)
+                {
+                    swal("Done", "Your comment has been posted.", "success").then((value) => {
+                            window.location.reload();
+                        });
+                }
+                else{
+                    swal("Failed", "Your review has not been posted.", "warning");
+                }
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL");
+            });
+    });
+</script>

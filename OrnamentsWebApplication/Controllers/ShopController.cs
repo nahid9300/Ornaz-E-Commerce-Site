@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Ornaments.BLL.BLL;
-using Ornaments.Model.Model;
 using Ornaments.Repository.Repository;
 using OrnamentsWebApplication.ViewModel;
+using Order = Ornaments.Model.Model.Order;
+using OrderItem = Ornaments.Model.Model.OrderItem;
+
 
 namespace OrnamentsWebApplication.Controllers
 {
@@ -47,28 +49,29 @@ namespace OrnamentsWebApplication.Controllers
 
         CategoryManager _categoryManager = new CategoryManager();
 
-        private ShopRepository _shopRepository = new ShopRepository();
+        ShopRepository _shopRepository = new ShopRepository();
+        OrdersRepository _ordersRepository=new OrdersRepository();
 
-
-        [Authorize]
+        
         public ActionResult Checkout()
         {
             CheckoutViewModel checkoutViewModel = new CheckoutViewModel();
             var cartProductsCookie = Request.Cookies["CartProducts"];
-
+            var invoiceNumber = Guid.NewGuid();
             if (cartProductsCookie != null && !string.IsNullOrEmpty(cartProductsCookie.Value))
             {
                 //var productIDs = cartProductsCookie.Value;
-
+               
                 //var ids = productIDs.Split('-');
 
                 //List<int> pIDs = ids.Select(x => int.Parse(x)).ToList();
+                checkoutViewModel.invoiceNumber = invoiceNumber.ToString();
 
                 checkoutViewModel.CartProductsIds = cartProductsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
 
                 checkoutViewModel.CartProducts = _productRepository.GetProducts(checkoutViewModel.CartProductsIds);
-                checkoutViewModel.User = UserManager.FindById(User.Identity.GetUserId());
 
+                checkoutViewModel.User = UserManager.FindById(User.Identity.GetUserId());
             }
             return View(checkoutViewModel);
         }
@@ -117,8 +120,8 @@ namespace OrnamentsWebApplication.Controllers
 
             return PartialView(priceFilteringViewModel);
         }
-
-        public JsonResult PlaceOrder(string productIDs)
+        
+        public JsonResult PlaceOrder(string productIDs, string invoice)
         {
 
             JsonResult result = new JsonResult();
@@ -131,19 +134,23 @@ namespace OrnamentsWebApplication.Controllers
 
                 var boughtProducts = _productRepository.GetProducts(productQuantities.Distinct().ToList());
 
+
                 Order newOrder = new Order();
                 newOrder.UserID = User.Identity.GetUserId();
                 newOrder.OrderAt = DateTime.Now;
                 newOrder.Status = "Pending";
-
+                newOrder.invoiceNumber = invoice;
+                newOrder.UserName = User.Identity.GetUserName();
                 newOrder.OrderItems = new List<OrderItem>();
                 newOrder.OrderItems.AddRange(boughtProducts.Select(x => new OrderItem()
-                { ProductID = x.Id, Quantity = productQuantities.Where(productID => productID == x.Id).Count() }));
+                { ProductID = x.Id, Quantity = productQuantities.Where(productID => productID == x.Id).Count()}));
 
                 newOrder.TotalAmount = boughtProducts.Sum(x =>
-                    x.Price * productQuantities.Where(productID => productID == x.Id).Count());
+                x.Price * productQuantities.Where(productID => productID == x.Id).Count());
 
                 var rowsEffected = _shopRepository.SaveOrder(newOrder);
+
+
                 result.Data = new { Success = true, Rows = rowsEffected };
             }
             else
@@ -153,5 +160,7 @@ namespace OrnamentsWebApplication.Controllers
 
             return result;
         }
+
+        
     }
 }

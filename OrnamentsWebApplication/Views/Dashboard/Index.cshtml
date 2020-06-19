@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 130px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<h2 class="text-center">Admin Dashboard</h2>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="column" style="background-color: #aaa;">
+
+                <h2 class="text-center"><a href="@Url.Action("Index", "Category")">Manage Category</a></h2>
+
+            </div>
+            <div class="column" style="background-color: #bbb;">
+                <h2 class="text-center"><a href="@Url.Action("Index", "Product")">Manage Product</a></h2>
+
+            </div>
+            <div class="column" style="background-color: #ccc;">
+                <h2 class="text-center"><a href="@Url.Action("Index", "Order")">Manage Order</a></h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -10,7 +10,6 @@ namespace OrnamentsWebApplication.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "OrnamentsWebApplication.Models.ApplicationDbContext";
         }
 
         protected override void Seed(OrnamentsWebApplication.Models.ApplicationDbContext context)

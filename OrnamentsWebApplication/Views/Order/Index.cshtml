@@ -28,9 +28,6 @@
                                     <option></option>
                                     <option name="Status" value="@Model.Status">Pending</option>
                                     <option name="Status" value="@Model.Status">In Progress</option>
-                                    <option name="UserID" value="@Model.UserID">UserID</option>
-
-                                    }
                                 </select>
                             </div>
                         </div>
@@ -41,6 +38,7 @@
                                     <div class="col-md-4 pr-0">
                                         <button class="btn btn-primary form-control" type="submit" id="searchBtn">Search</button>
                                     </div>
+                                    
                                     <div class="col-md-4 pr-0">
                                         <a class="btn btn-primary form-control" type="button" id="resetBtn" href="@Url.Action("Index", "Order", new { pageNo = 1 })">Reset</a>
                                     </div>
@@ -55,6 +53,7 @@
                     <thead>
                         <tr>
                             <th class="font-weight-bold">User ID</th>
+                            <th class="font-weight-bold">Invoice</th>
                             <th class="font-weight-bold">Total Price</th>
                             <th class="font-weight-bold">Status</th>
                             <th class="font-weight-bold wrap-td">Actions</th>
@@ -67,7 +66,8 @@
                             foreach (var order in Model.Orders)
                             {
                                 <tr>
-                                    <td>@order.UserID</td>
+                                    <td>@order.UserID.Substring(0,5)</td>
+                                    <td>@order.invoiceNumber</td>
                                     <td>
                                     @order.TotalAmount
                                     </td>
@@ -131,7 +131,7 @@
         var searchValue = $("#searchTxt").val();
 
         $.ajax({
-                url: '@Url.Action("Index", "Order")',//'/Category/CategoryTable',
+                url: '@Url.Action("Index", "Order")',
                 data: {
                     status: searchValue,
                     userID: searchValue
@@ -145,3 +145,5 @@
             });
     });
 </script>
+
+

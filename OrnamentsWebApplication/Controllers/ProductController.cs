@@ -7,16 +7,19 @@ using System.Web;
 using System.Web.Mvc;
 using OrnamentsWebApplication.ViewModel;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Ornaments.Repository.Repository;
 
 namespace OrnamentsWebApplication.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductController : Controller
     {
-        string message = "";
+       
 
         ProductManager _productManager = new ProductManager();
         CategoryManager _categoryManager = new CategoryManager();
+        ReviewManager _reviewManager=new ReviewManager();
 
         public ActionResult Index()
         {
@@ -130,6 +133,7 @@ namespace OrnamentsWebApplication.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Details(int Id)
 
         {
@@ -139,11 +143,14 @@ namespace OrnamentsWebApplication.Controllers
             productViewModel.Products = _productManager.GetAll();
             productViewModel.Product = _productManager.GetById(Id);
 
-            
+            productViewModel.Reviews = _reviewManager.GetRelatedReviewByProduct(Id);
 
 
             return View(productViewModel);
         }
+
+    
+       
 
     }
 }

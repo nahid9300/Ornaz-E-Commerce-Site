@@ -51,33 +51,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\OrnamentDbContext.cs" />
-    <Compile Include="Migrations\202002021254220_initialized.cs" />
-    <Compile Include="Migrations\202002021254220_initialized.Designer.cs">
-      <DependentUpon>202002021254220_initialized.cs</DependentUpon>
+    <Compile Include="Migrations\202005191505223_tiredofthisshit.cs" />
+    <Compile Include="Migrations\202005191505223_tiredofthisshit.Designer.cs">
+      <DependentUpon>202005191505223_tiredofthisshit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002181807595_initialized1.cs" />
-    <Compile Include="Migrations\202002181807595_initialized1.Designer.cs">
-      <DependentUpon>202002181807595_initialized1.cs</DependentUpon>
+    <Compile Include="Migrations\202005200808556_feedback.cs" />
+    <Compile Include="Migrations\202005200808556_feedback.Designer.cs">
+      <DependentUpon>202005200808556_feedback.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003070759166_initialized2.cs" />
-    <Compile Include="Migrations\202003070759166_initialized2.Designer.cs">
-      <DependentUpon>202003070759166_initialized2.cs</DependentUpon>
+    <Compile Include="Migrations\202005200849518_feedback update.cs" />
+    <Compile Include="Migrations\202005200849518_feedback update.Designer.cs">
+      <DependentUpon>202005200849518_feedback update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003091516451_Product.cs" />
-    <Compile Include="Migrations\202003091516451_Product.Designer.cs">
-      <DependentUpon>202003091516451_Product.cs</DependentUpon>
+    <Compile Include="Migrations\202005200908521_productidInFeedBack.cs" />
+    <Compile Include="Migrations\202005200908521_productidInFeedBack.Designer.cs">
+      <DependentUpon>202005200908521_productidInFeedBack.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003101536151_Config.cs" />
-    <Compile Include="Migrations\202003101536151_Config.Designer.cs">
-      <DependentUpon>202003101536151_Config.cs</DependentUpon>
+    <Compile Include="Migrations\202005211205318_FeedbackDelete.cs" />
+    <Compile Include="Migrations\202005211205318_FeedbackDelete.Designer.cs">
+      <DependentUpon>202005211205318_FeedbackDelete.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005131608033_new order properties.cs" />
-    <Compile Include="Migrations\202005131608033_new order properties.Designer.cs">
-      <DependentUpon>202005131608033_new order properties.cs</DependentUpon>
+    <Compile Include="Migrations\202005251225496_OrderTableUpdate.cs" />
+    <Compile Include="Migrations\202005251225496_OrderTableUpdate.Designer.cs">
+      <DependentUpon>202005251225496_OrderTableUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005141533548_OrderItemQuantity.cs" />
-    <Compile Include="Migrations\202005141533548_OrderItemQuantity.Designer.cs">
-      <DependentUpon>202005141533548_OrderItemQuantity.cs</DependentUpon>
+    <Compile Include="Migrations\202005251336361_InvoiceNumberAdded.cs" />
+    <Compile Include="Migrations\202005251336361_InvoiceNumberAdded.Designer.cs">
+      <DependentUpon>202005251336361_InvoiceNumberAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181511321_Reviews.cs" />
+    <Compile Include="Migrations\202006181511321_Reviews.Designer.cs">
+      <DependentUpon>202006181511321_Reviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006190127370_ReviewUpdated.cs" />
+    <Compile Include="Migrations\202006190127370_ReviewUpdated.Designer.cs">
+      <DependentUpon>202006190127370_ReviewUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,26 +101,32 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002021254220_initialized.resx">
-      <DependentUpon>202002021254220_initialized.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005191505223_tiredofthisshit.resx">
+      <DependentUpon>202005191505223_tiredofthisshit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002181807595_initialized1.resx">
-      <DependentUpon>202002181807595_initialized1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005200808556_feedback.resx">
+      <DependentUpon>202005200808556_feedback.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003070759166_initialized2.resx">
-      <DependentUpon>202003070759166_initialized2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005200849518_feedback update.resx">
+      <DependentUpon>202005200849518_feedback update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003091516451_Product.resx">
-      <DependentUpon>202003091516451_Product.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005200908521_productidInFeedBack.resx">
+      <DependentUpon>202005200908521_productidInFeedBack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003101536151_Config.resx">
-      <DependentUpon>202003101536151_Config.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005211205318_FeedbackDelete.resx">
+      <DependentUpon>202005211205318_FeedbackDelete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005131608033_new order properties.resx">
-      <DependentUpon>202005131608033_new order properties.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005251225496_OrderTableUpdate.resx">
+      <DependentUpon>202005251225496_OrderTableUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005141533548_OrderItemQuantity.resx">
-      <DependentUpon>202005141533548_OrderItemQuantity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005251336361_InvoiceNumberAdded.resx">
+      <DependentUpon>202005251336361_InvoiceNumberAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181511321_Reviews.resx">
+      <DependentUpon>202006181511321_Reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006190127370_ReviewUpdated.resx">
+      <DependentUpon>202006190127370_ReviewUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

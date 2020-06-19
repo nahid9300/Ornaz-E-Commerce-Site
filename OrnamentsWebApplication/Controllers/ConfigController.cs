@@ -10,6 +10,7 @@ using OrnamentsWebApplication.ViewModel;
 
 namespace OrnamentsWebApplication.Controllers
 {
+    
     public class ConfigController : Controller
     {
       ConfigurationManager _configurationManager=new ConfigurationManager();

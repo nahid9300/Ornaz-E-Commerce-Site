@@ -10,7 +10,7 @@ namespace OrnamentsWebApplication.Controllers
 {
     public class WidgetsController : Controller
     {
-        // GET: Widgets
+       
         public ActionResult Products(bool isLatestProducts, int? categoryID)
         {
             ProductsWidgetViewModel productsWidgetViewModel=new ProductsWidgetViewModel();

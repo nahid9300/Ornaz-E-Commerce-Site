@@ -32,10 +32,7 @@ namespace OrnamentsWebApplication
              cfg.CreateMap<ConfigViewModel, Config>();
              cfg.CreateMap<Config, ConfigViewModel>();
 
-
-
-
-
+           
             });
         }
     }

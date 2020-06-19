@@ -25,6 +25,10 @@ namespace Ornaments.Repository.Repository
             {
                 aProduct.Name = product.Name;
                 aProduct.Description = product.Description;
+                aProduct.Category.Name = product.Category.Name;
+                aProduct.ImageURL = product.ImageURL;
+                aProduct.Price = product.Price;
+                aProduct.Quantity = product.Quantity;
             }
 
             return _dbContext.SaveChanges() > 0;

@@ -10,15 +10,15 @@ using AutoMapper;
 
 namespace OrnamentsWebApplication.Controllers
 {
-    
+   [Authorize(Roles = "admin")]
     public class CategoryController : Controller
     {
-        string message = "";
+       
         CategoryManager _categoryManager = new CategoryManager();
         // GET: Category
         [HttpGet]
 
-
+        
         public ActionResult Index()
         {
             return View();

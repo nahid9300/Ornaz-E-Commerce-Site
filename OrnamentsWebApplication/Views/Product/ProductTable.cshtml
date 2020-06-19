@@ -39,6 +39,7 @@
             <tr>
                 <th class="font-weight-bold">Product Name</th>
                 <th class="font-weight-bold">Category</th>
+                <th class="font-weight-bold">Quantity</th>
                 <th class="font-weight-bold">Price</th>
                 <th class="font-weight-bold wrap-td">Actions</th>
             </tr>
@@ -49,24 +50,25 @@
 
                 foreach (var product in Model.Products)
                 {
-                    <tr>
-                        <td>@product.Name</td>
-                        <td>
-                            @if (product.Category != null)
-                            {
-                                <text>@product.Category.Name</text>
-                            }
-                            else
-                            {
-                                <text>-</text>
-                            }
-                        </td>
-                        <td>@product.Price</td>
-                        <td class="wrap-td">
-                            <button class="editBtn" data-id="@product.Id">Edit</button>
-                            <button class="deleteBtn" data-id="@product.Id">Delete</button>
-                        </td>
-                    </tr>
+            <tr>
+                <td>@product.Name</td>
+                <td>
+                    @if (product.Category != null)
+                    {
+                        <text>@product.Category.Name</text>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td>@product.Quantity</td>
+                <td>@product.Price</td>
+                <td class="wrap-td">
+                    <button class="editBtn" data-id="@product.Id">Edit</button>
+                    <button class="deleteBtn" data-id="@product.Id">Delete</button>
+                </td>
+            </tr>
                 }
             }
             else

@@ -5,6 +5,7 @@ using System.Web;
 using Ornaments.Model.Model;
 using OrnamentsWebApplication.Models;
 
+
 namespace OrnamentsWebApplication.ViewModel
 {
     public class CheckoutViewModel
@@ -12,8 +13,12 @@ namespace OrnamentsWebApplication.ViewModel
         public List<Product> CartProducts { get; set; }
 
         public List<int> CartProductsIds { get; set; }
+        public List<Order> Orders { get; set; }
 
         public ApplicationUser User { get; set; }
+        public string invoiceNumber { get; set; }
+
+        
     }
 
     public class ShopViewModel
@@ -39,4 +44,6 @@ namespace OrnamentsWebApplication.ViewModel
         public int? CategoryId { get; set; }
         public string SearchTerm { get; set; }
     }
+
+    
 }

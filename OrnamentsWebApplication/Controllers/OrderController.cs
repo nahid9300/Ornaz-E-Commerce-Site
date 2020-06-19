@@ -10,6 +10,7 @@ using OrnamentsWebApplication.ViewModel;
 
 namespace OrnamentsWebApplication.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class OrderController : Controller
     {
 
@@ -79,15 +80,17 @@ namespace OrnamentsWebApplication.Controllers
             return View(orderDetailsViewModel);
         }
 
-        public JsonResult ChangeStatus(string status, int ID)
+        public JsonResult ChangeStatus(string status, int ID, int productID, int Quantity)
         {
             JsonResult result = new JsonResult();
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
 
-            result.Data = new { Success = _ordersRepository.UpdateOrderStatus(ID, status) };
+            result.Data = new { Success = _ordersRepository.UpdateOrderStatus(ID, status, productID, Quantity) };
 
             return result;
         }
+
+
 
        
     }

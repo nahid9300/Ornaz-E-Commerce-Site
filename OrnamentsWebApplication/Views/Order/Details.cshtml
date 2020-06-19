@@ -15,14 +15,17 @@
                     <ul class="list-group mb-3">
                         @foreach (var orderItem in Model.Order.OrderItems)
                         {
-                            <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@orderItem.ID">
-                                <div>
-                                    <h6 class="my-0">@i - @orderItem.Product.Name - Qty: @orderItem.Quantity</h6>
-                                    <small class="text-muted">@(orderItem.Product.Description.Length > 100 ? orderItem.Product.Description.Substring(0, 99) : orderItem.Product.Description)</small>
-                                </div>
-                                <span class="text-muted">Unit Price: $ @orderItem.Product.Price - Total Price: @(orderItem.Quantity * orderItem.Product.Price)</span>
-                            </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@orderItem.ID">
+                            <div>
+                                <h6 class="my-0">@i - @orderItem.Product.Name - Qty: @orderItem.Quantity</h6>
+                                <small class="text-muted">@(orderItem.Product.Description.Length > 100 ? orderItem.Product.Description.Substring(0, 99) : orderItem.Product.Description)</small>
+                            </div>
+                            <span class="text-muted">Unit Price: $ @orderItem.Product.Price - Total Price: @(orderItem.Quantity * orderItem.Product.Price)</span>
 
+                            <input type="hidden" id="forUpdateQuantity" value="@orderItem.Quantity">
+                            <input type="hidden" id="productIDQuantity" value="@orderItem.Product.Id">
+                        </li>
+                            
                             i++;
                         }
                         <li class="list-group-item d-flex justify-content-between">
@@ -66,28 +69,34 @@
     </section>
 
     <script>
-	$("#changeStatus").change(function () {
-		$.ajax({
-			url: '@Url.Action("ChangeStatus", "Order")',
-			data: {
-				status: $("#changeStatus").val(),
-				ID: '@Model.Order.Id'
-			}
-		})
-        .done(function (response) {
-        	if(response.Success)
-        	{
-        		swal("Done", "Your order status has been updated.", "success");
-        	}
-        	else {
-                swal("Error", "Unable to update order status", "warning");
-        	}
-        })
-        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
-        	alert("FAIL");
+        $("#changeStatus").change(function () {
+            $.ajax({
+                    url: '@Url.Action("ChangeStatus", "Order")',
+                    data: {
+                        status: $("#changeStatus").val(),
+                        ID: '@Model.Order.Id',
+                        productID: $("#productIDQuantity").val(),
+                        Quantity: $("#forUpdateQuantity").val()
+                
+                    }
+                })
+                .done(function (response) {
+                    if(response.Success)
+                    {
+                        swal("Done", "Your order status has been updated.", "success");
+                    }
+                    else {
+                        swal("Error", "Unable to update order status", "warning");
+                    }
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("FAIL");
+                });
         });
-	});
     </script>
+
+    
+
 }
 else
 {

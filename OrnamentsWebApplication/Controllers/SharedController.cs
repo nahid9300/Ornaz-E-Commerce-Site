@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace OrnamentsWebApplication.Controllers
 {
+    
     public class SharedController : Controller
     {
         

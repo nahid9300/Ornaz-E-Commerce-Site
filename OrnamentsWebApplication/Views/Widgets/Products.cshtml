@@ -15,10 +15,10 @@
         <ul class="flat-filter style-1 text-center max-width-682 clearfix">
             <li class="active"><a href="#" data-filter="*">All Product</a></li>
 
-            @foreach (var category in Model.Products.Select(x => x.Category).ToList().Distinct())
+            @*@foreach (var category in Model.Products.Select(x => x.Category).ToList().Distinct())
             {
-                <li><a href="#" data-filter=".@category.Name">For @category.Name</a></li>
-            }
+                <li><a href="#" data-filter=".@category.Name.ToLower()">For @category.Name</a></li>
+            }*@
         </ul>
         <div class="divider h54"></div>
     }
@@ -46,7 +46,7 @@
                         <span class="product-title">@product.Name</span>
                         <div class="price">
                             <ins>
-                                <span class="amount"> &amp;@product.Price</span>
+                                <span class="amount"> BDT-@product.Price</span>
                             </ins>
                         </div>
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 using Ornaments.Model.Model;
 using OrnamentsWebApplication.Models;
 
@@ -16,7 +18,11 @@ namespace OrnamentsWebApplication.ViewModel
         public List<Order> Orders { get; set; }
 
         public ApplicationUser User { get; set; }
+
+      
         public string invoiceNumber { get; set; }
+        
+        public string TransactionNumber { get; set; }
 
         
     }

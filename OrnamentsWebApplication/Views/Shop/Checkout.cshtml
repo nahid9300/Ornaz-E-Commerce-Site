@@ -1,6 +1,9 @@
 ﻿
 @model OrnamentsWebApplication.ViewModel.CheckoutViewModel
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+
 
 @if (Model != null && Model.CartProducts != null && Model.CartProducts.Count > 0)
 {
@@ -22,26 +25,28 @@
                                     <h6 class="my-0">@i - @product.Name - Quantity: @productQuantity</h6>
                                     <small class="text-muted">@(product.Description.Length > 100 ? product.Description.Substring(0, 99) : product.Description)</small>
                                 </div>
-                                <span class="text-muted">Unit Price: $ @product.Price - Total Price: @(productQuantity * product.Price)</span>
+                                <span class="text-muted">Unit Price: BDT- @product.Price - Total Price: @(productQuantity * product.Price)</span>
                             </li>
-                        
 
+                          
                             i++;
                         }
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>$ @Model.CartProducts.Sum(x => x.Price * Model.CartProductsIds.Where(productID => productID == x.Id).Count())</strong>
-                           @{
-                               Session["totalSes"] = Model.CartProducts.Sum(x => x.Price * Model.CartProductsIds.Where(productID => productID == x.Id).Count());
-                           }
+                            <span>Total (BDT)</span>
+                            <strong>BDT @Model.CartProducts.Sum(x => x.Price * Model.CartProductsIds.Where(productID => productID == x.Id).Count())</strong>
+                           
                         </li>
                     </ul>
+                    <button id="clearCart" type="button" class="btn btn-dark float-right">Clear Cart</button>
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">Billing address</h4>
-                        <form class="needs-validation" novalidate="">
+                        <h3 class="mb-3">Billing address</h3>
+
+                        <br />
+                        <br />
+                        <form id="cashOnValidate" class="needs-validation" novalidate="">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label for="firstName">Invoice Number</label>
@@ -68,22 +73,22 @@
 
                             <div id="editor"></div>
                             <button id="placeOrderBtn" class="btn btn-primary btn-lg btn-block" type="button">Place Order!</button>
-                            <button href="@Url.Action("PaymentWithPaypal","Paypal")" id="onlinePayBtn" class="btn btn-primary btn-sm btn-block">Pay Online</button>
+
                         </form>
 
                     </div>
                 }
-                else  
+                else
                 {
-                <button href="@Url.Action("Register","Account")" class="btn btn-primary btn-lg btn-block" type="button">Register</button>
-              
+                    <button class="btn btn-primary btn-lg btn-block" type="button">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</button>
+
                 }
 
             </div>
         </div><!-- /.container -->
     </section>
 
-
+    
     <script>
         $("#placeOrderBtn").click(function () {
             $.ajax({
@@ -91,7 +96,7 @@
                     data: {
                         productIDs: '@string.Join("-", Model.CartProductsIds)',
                         invoice: $("#invoiceNumber").val()
-                    }
+                        }
                 })
                 .done(function (response) {
                     if(response.Success)
@@ -117,10 +122,16 @@
         });
     </script>
 
+    <script>
+        $("#clearCart").click(function (response) {
+            $.cookie('CartProducts', '', { path: '/' });
 
+            swal("Done", "Cart has been cleared", "success").then((value) => {
+                window.location = '@Url.Action("Checkout", "Shop")';
+            });
 
-
-
+        });
+    </script>
 
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
@@ -141,6 +152,9 @@
             doc.save('Invoice.pdf');
         });
     </script>
+
+
+
 }
 else
 {

@@ -3,6 +3,8 @@
     ViewBag.Title = "Orders";
 }
 
+
+
 <section class="flat-row flat-iconbox">
     <div class="container">
         <div class="row">
@@ -23,11 +25,11 @@
                             <div class="form-group">
                                 <label>Search</label>
                                 @*<input class="form-control" id="searchTxt" name="Status" value="@Model.Status" />*@
-                                
+
                                 <select id="searchTxt" name="Status">
                                     <option></option>
                                     <option name="Status" value="@Model.Status">Pending</option>
-                                    <option name="Status" value="@Model.Status">In Progress</option>
+                                    <option name="Status" value="@Model.Status">Delivered</option>
                                 </select>
                             </div>
                         </div>
@@ -38,7 +40,7 @@
                                     <div class="col-md-4 pr-0">
                                         <button class="btn btn-primary form-control" type="submit" id="searchBtn">Search</button>
                                     </div>
-                                    
+
                                     <div class="col-md-4 pr-0">
                                         <a class="btn btn-primary form-control" type="button" id="resetBtn" href="@Url.Action("Index", "Order", new { pageNo = 1 })">Reset</a>
                                     </div>
@@ -54,6 +56,7 @@
                         <tr>
                             <th class="font-weight-bold">User ID</th>
                             <th class="font-weight-bold">Invoice</th>
+                            <th class="font-weight-bold" style="display: none">UserName</th>
                             <th class="font-weight-bold">Total Price</th>
                             <th class="font-weight-bold">Status</th>
                             <th class="font-weight-bold wrap-td">Actions</th>
@@ -66,10 +69,11 @@
                             foreach (var order in Model.Orders)
                             {
                                 <tr>
-                                    <td>@order.UserID.Substring(0,5)</td>
+                                    <td>@order.UserID.Substring(0, 5)</td>
                                     <td>@order.invoiceNumber</td>
-                                    <td>
-                                    @order.TotalAmount
+                                    <td style="display: none">@order.UserName</td>
+                                    <td >
+                                        @order.TotalAmount
                                     </td>
                                     <td>@order.Status</td>
                                     <td class="wrap-td">
@@ -86,6 +90,7 @@
                         }
                     </tbody>
                 </table>
+                <button class="btn-info float-right" onclick="javascript: fnExcelReport('OrdersTable', 'data')">Print Data</button>
                 <div>
                     @if (Model.Pager != null && Model.Pager.TotalPages > 1)
                     {
@@ -145,5 +150,34 @@
             });
     });
 </script>
+
+<script src="~/Content/Design/javascript/FileSaver.js"></script>
+<script>
+    function fnExcelReport(id, name) {
+        var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
+        tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
+        tab_text = tab_text + '<x: Name>Test Sheet</x: Name>';
+        tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions ></x: ExcelWorksheet > ';
+        tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+        tab_text = tab_text + "<table border='1px' style='color:black'>";
+
+
+        var exportTable = $('#' + id).clone();
+        exportTable.find('th').last().remove();
+        exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
+        exportTable.find('a').each(function (index, elem) { $(elem).remove(); });
+
+        tab_text = tab_text + exportTable.html();
+        tab_text = tab_text + '</table></body></html>';
+        var fileName = "Order Report" + '.xls';
+
+        //Save the file
+        var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
+        window.saveAs(blob, fileName);
+    }
+</script>
+
+
+
 
 

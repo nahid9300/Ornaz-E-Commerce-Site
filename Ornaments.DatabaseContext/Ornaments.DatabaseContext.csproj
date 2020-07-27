@@ -87,6 +87,10 @@
     <Compile Include="Migrations\202006190127370_ReviewUpdated.Designer.cs">
       <DependentUpon>202006190127370_ReviewUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006221506215_TransactionNumber Added.cs" />
+    <Compile Include="Migrations\202006221506215_TransactionNumber Added.Designer.cs">
+      <DependentUpon>202006221506215_TransactionNumber Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006190127370_ReviewUpdated.resx">
       <DependentUpon>202006190127370_ReviewUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006221506215_TransactionNumber Added.resx">
+      <DependentUpon>202006221506215_TransactionNumber Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

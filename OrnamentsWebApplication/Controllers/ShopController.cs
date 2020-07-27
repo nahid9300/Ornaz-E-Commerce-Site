@@ -134,16 +134,19 @@ namespace OrnamentsWebApplication.Controllers
 
                 var boughtProducts = _productRepository.GetProducts(productQuantities.Distinct().ToList());
 
-
+                
                 Order newOrder = new Order();
                 newOrder.UserID = User.Identity.GetUserId();
                 newOrder.OrderAt = DateTime.Now;
                 newOrder.Status = "Pending";
+
                 newOrder.invoiceNumber = invoice;
                 newOrder.UserName = User.Identity.GetUserName();
                 newOrder.OrderItems = new List<OrderItem>();
                 newOrder.OrderItems.AddRange(boughtProducts.Select(x => new OrderItem()
                 { ProductID = x.Id, Quantity = productQuantities.Where(productID => productID == x.Id).Count()}));
+
+                
 
                 newOrder.TotalAmount = boughtProducts.Sum(x =>
                 x.Price * productQuantities.Where(productID => productID == x.Id).Count());
@@ -161,6 +164,72 @@ namespace OrnamentsWebApplication.Controllers
             return result;
         }
 
-        
+        public ActionResult OnlinePaymentCheckout()
+        {
+            CheckoutViewModel checkoutViewModel = new CheckoutViewModel();
+            var cartProductsCookie = Request.Cookies["CartProducts"];
+            var invoiceNumber = Guid.NewGuid();
+            if (cartProductsCookie != null && !string.IsNullOrEmpty(cartProductsCookie.Value))
+            {
+                //var productIDs = cartProductsCookie.Value;
+
+                //var ids = productIDs.Split('-');
+
+                //List<int> pIDs = ids.Select(x => int.Parse(x)).ToList();
+                checkoutViewModel.invoiceNumber = invoiceNumber.ToString();
+
+                checkoutViewModel.CartProductsIds = cartProductsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
+
+                checkoutViewModel.CartProducts = _productRepository.GetProducts(checkoutViewModel.CartProductsIds);
+
+                checkoutViewModel.User = UserManager.FindById(User.Identity.GetUserId());
+            }
+            return View(checkoutViewModel);
+        }
+
+        public JsonResult OnlinePlaceOrder(string productIDs, string invoice, string transactionNumber)
+        {
+
+            JsonResult result = new JsonResult();
+
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            if (!string.IsNullOrEmpty(productIDs))
+            {
+                var productQuantities = productIDs.Split('-').Select(x => int.Parse(x)).ToList();
+
+                var boughtProducts = _productRepository.GetProducts(productQuantities.Distinct().ToList());
+
+
+                Order newOrder = new Order();
+                newOrder.UserID = User.Identity.GetUserId();
+                newOrder.OrderAt = DateTime.Now;
+                newOrder.Status = "Pending";
+                newOrder.invoiceNumber = invoice;
+                newOrder.TransactionNumber = transactionNumber;
+                newOrder.UserName = User.Identity.GetUserName();
+                newOrder.OrderItems = new List<OrderItem>();
+                newOrder.OrderItems.AddRange(boughtProducts.Select(x => new OrderItem()
+                    { ProductID = x.Id, Quantity = productQuantities.Where(productID => productID == x.Id).Count() }));
+
+                newOrder.TotalAmount = boughtProducts.Sum(x =>
+                    x.Price * productQuantities.Where(productID => productID == x.Id).Count());
+
+               
+
+                var rowsEffected = _shopRepository.SaveOrder(newOrder);
+
+
+                result.Data = new { Success = true, Rows = rowsEffected };
+            }
+            else
+            {
+                result.Data = new { Success = false };
+            }
+
+            return result;
+        }
+
+
     }
 }

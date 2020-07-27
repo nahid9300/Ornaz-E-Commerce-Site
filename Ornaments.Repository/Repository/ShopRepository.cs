@@ -13,8 +13,7 @@ namespace Ornaments.Repository.Repository
         OrnamentDbContext _dbContext = new OrnamentDbContext();
        
         public bool SaveOrder(Order order)
-        {
-            
+        {            
             _dbContext.Orders.Add(order);
 
             return _dbContext.SaveChanges() > 0;

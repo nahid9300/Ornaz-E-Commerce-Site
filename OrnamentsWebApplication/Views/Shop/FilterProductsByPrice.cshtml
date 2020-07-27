@@ -19,26 +19,29 @@
         {
 
             var imageURL = string.IsNullOrEmpty(product.ImageURL) ? defaultImageURL : product.ImageURL;
-
-            <li class="product-item">
-                <div class="product-thumb clearfix">
-                    <a href="@Url.Action("Details", "Product",new{ID=product.Id})">
-                        <img src="@imageURL" alt="image">
-                    </a>
-                </div>
-                <div class="product-info clearfix">
-                    <span class="product-title">@product.Name</span>
-                    <div class="price">
-                        <ins>
-                            <span class="amount">$ @product.Price</span>
-                        </ins>
+            if (product.Quantity > 0)
+            {
+                <li class="product-item">
+                    <div class="product-thumb clearfix">
+                        <a href="@Url.Action("Details", "Product",new{ID=product.Id})">
+                            <img src="@imageURL" alt="image">
+                        </a>
                     </div>
-                </div>
-                <div class="add-to-cart text-center">
-                    <a class="productAddToCart" data-id="@product.Id">ADD TO CART</a>
-                </div>
-                <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-            </li>
+                    <div class="product-info clearfix">
+                        <span class="product-title">@product.Name</span>
+                        <div class="price">
+                            <ins>
+                                <span class="amount">BDT-@product.Price</span>
+                            </ins>
+                        </div>
+                    </div>
+                    <div class="add-to-cart text-center">
+                        <a class="productAddToCart" data-id="@product.Id">ADD TO CART</a>
+                    </div>
+                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                </li>
+            }
+            
         }
 
 

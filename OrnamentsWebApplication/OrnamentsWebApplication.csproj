@@ -451,6 +451,7 @@
     <Content Include="Content\Design\images\wordpress-version.png" />
     <Content Include="Content\Design\javascript\bootstrap.min.js" />
     <Content Include="Content\Design\javascript\equalize.min.js" />
+    <Content Include="Content\Design\javascript\FileSaver.js" />
     <Content Include="Content\Design\javascript\gmap3.min.js" />
     <Content Include="Content\Design\javascript\images-loaded.js" />
     <Content Include="Content\Design\javascript\jquery-countTo.js" />
@@ -595,6 +596,7 @@
     <Content Include="Views\Track\TrackOrder.cshtml" />
     <Content Include="Views\Paypal\FailureView.cshtml" />
     <Content Include="Views\Paypal\SuccessView.cshtml" />
+    <Content Include="Views\Shop\OnlinePaymentCheckout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
